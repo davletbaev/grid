@@ -43,11 +43,11 @@
     "node_modules"
   ],
   "files": [
-    "assets/*",
-    "lib/*",
     "dist/*",
     "src/*",
-    "es/*"
+    "es/*",
+    "*.md",
+    ".*"
   ],
   "dependencies": {
     "classnames": "^2.2.6",
