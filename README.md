@@ -1,6 +1,6 @@
 # @wiremore/grid
 
-Simply put: it's a grid. A dead simple css grid with React components. Have a look at the Storybook for a preview: https://wiremore-grid.surge.sh/
+Simply put: it's a grid. A dead simple mobile-first 12 column css grid with React components. Have a look at the Storybook for a preview: https://wiremore-grid.surge.sh/
 
 ## Installation
 
@@ -23,20 +23,30 @@ import React from 'react';
 import { Grid, Column } from '@wiremore/grid/es';
 
 const Example = () => (
-    <Grid>
-        <Column xs={12} sm={6}>
-            First Column
-        </Column>
-        <Column xs={12} sm={6}>
-            Second Column
-        </Column>
-    </Grid>
+  <Grid>
+    <Column xs={12} sm={6}>
+      First Column
+    </Column>
+    <Column xs={12} sm={6}>
+      Second Column
+    </Column>
+  </Grid>
 );
 ```
 
+Out of the box the grid supports up to 5 different screen sizes ([media.css](https://github.com/wiremore/grid/blob/master/src/media.css)). You can use them to specify the size of a column within the grid:
+
+```jsx
+<Grid>
+  <Column xs={12} sm={8} md={6} lg={4} xl={2}>…</Column>
+</Grid>
+```
+
+All sizes "bubble up", meaning that all resolutions greater or equal to the one you specified inherit the size unless you overwrite them later. `<Column xs={12} />` shows a full width column from the smallest (`xs`) to the highest resolution. `<Column xs={12} md={6} />` turns into a half width column on medium (`md`) resolution viewports.
+
 ## Contributing
 
-This grid is developed using Storybook. Start storybook via `yarn start` or `npm start`. You can preview all your changes there.
+This grid is developed using Storybook. Start Storybook via `yarn start` or `npm start`. You can preview all your changes there.
 
 ### Commit messages
 
