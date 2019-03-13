@@ -1,6 +1,6 @@
 {
   "name": "@wiremore/grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Manuel Bieh <manuel.bieh@wiremore.com> (https://github.com/wiremore)",
   "license": "MIT",
   "main": "dist/main.js",
