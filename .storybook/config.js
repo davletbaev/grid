@@ -1,13 +1,13 @@
 import React from 'react';
-import { configure, setAddon, addDecorator } from '@storybook/react';
+import {
+    configure,
+    setAddon,
+    addDecorator,
+    addParameters,
+} from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
-// import { withInfo } from '@storybook/addon-info';
-import JSXAddon from 'storybook-addon-jsx';
-import './intro';
 
-setAddon(JSXAddon);
-
-// addDecorator(withInfo);
+import './stories/intro';
 
 // Add some padding to our stories
 addDecorator((storyFn) => (
@@ -27,12 +27,21 @@ export const resetPadding = (storyFn) => (
     </React.Fragment>
 );
 
-setOptions({
-    name: 'ManuelBieh UI',
-    url: 'https://www.manuelbieh.com',
-    hierarchySeparator: /\//,
-    hierarchyRootSeparator: /\|/,
+addParameters({
+    options: {
+        name: '@wiremore/grid',
+        url: 'https://www.manuelbieh.com',
+        hierarchySeparator: /\//,
+        hierarchyRootSeparator: /\|/,
+    },
 });
+
+// setOptions({
+//     name: '@wiremore/grid',
+//     url: 'https://www.manuelbieh.com',
+//     hierarchySeparator: /\//,
+//     hierarchyRootSeparator: /\|/,
+// });
 
 const req = require.context('../src', true, /.stories.js$/);
 function loadStories() {

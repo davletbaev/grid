@@ -1,7 +1,7 @@
 {
-  "name": "@manuel-bieh/ui",
-  "version": "1.1.10",
-  "author": "Manuel Bieh <info@manuelbieh.de> (https://github.com/manuelbieh)",
+  "name": "@wiremore/grid",
+  "version": "1.0.0",
+  "author": "Manuel Bieh <manuel.bieh@wiremore.com> (https://github.com/wiremore)",
   "license": "MIT",
   "main": "dist/main.js",
   "module": "es/index.js",
@@ -15,7 +15,7 @@
     "babel:build": "babel -d es ./src",
     "babel:watch": "babel -d es ./src --watch",
     "build": "yarn build:es && yarn build:compiled",
-    "build:es": "yarn transpile",
+    "build:es": "cross-env NODE_ENV=production yarn transpile",
     "build:compiled": "cross-env NODE_ENV=production node scripts/build.js",
     "build:withStats": "cross-env NODE_ENV=production webpack --config config/webpack.config.js/client.prod.js --json > bundle-stats.json",
     "build:watch": "cross-env NODE_ENV=development node scripts/build.js --watch",
@@ -32,21 +32,11 @@
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
-    "storybook:deploy": "surge --project ./storybook-static --domain manuelbieh-ui.surge.sh",
+    "storybook:deploy": "surge --project ./storybook-static --domain wiremore-grid.surge.sh",
     "test": "node scripts/test.js --env=jsdom",
     "test:update": "yarn test --updateSnapshot",
-    "transpile": "yarn clean:es && yarn babel:build && yarn postcss:build",
+    "transpile": "cross-env NODE_ENV=production yarn clean:es && yarn babel:build && yarn postcss:build",
     "watch": "concurrently \"yarn babel:watch\" \"yarn postcss:watch\""
-  },
-  "lint-staged": {
-    "*.{js,css}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.js": [
-      "eslint src",
-      "git add"
-    ]
   },
   "moduleRoots": [
     "src",
@@ -61,9 +51,15 @@
   ],
   "dependencies": {
     "classnames": "^2.2.6",
+    "github-markdown-css": "^3.0.1",
+    "marked": "^0.6.1",
     "react": "^16.8.4",
     "react-dev-utils": "^8.0.0",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "stylelint": "^9.10.1",
+    "stylelint-config-prettier": "^5.0.0",
+    "stylelint-order": "^2.1.0",
+    "stylelint-prettier": "^1.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -78,15 +74,15 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@semantic-release/git": "^7.0.5",
-    "@storybook/addon-actions": "^4.0.4",
-    "@storybook/addon-backgrounds": "^4.0.4",
-    "@storybook/addon-info": "^4.0.6",
-    "@storybook/addon-knobs": "^4.0.4",
-    "@storybook/addon-links": "^4.0.4",
-    "@storybook/addon-options": "^4.0.4",
-    "@storybook/addon-storysource": "^4.0.4",
-    "@storybook/addons": "^4.0.4",
-    "@storybook/react": "^4.0.4",
+    "@storybook/addon-actions": "^5.0.1",
+    "@storybook/addon-backgrounds": "^5.0.1",
+    "@storybook/addon-info": "^5.0.1",
+    "@storybook/addon-knobs": "^5.0.1",
+    "@storybook/addon-links": "^5.0.1",
+    "@storybook/addon-options": "^5.0.1",
+    "@storybook/addon-storysource": "^5.0.1",
+    "@storybook/addons": "^5.0.1",
+    "@storybook/react": "^5.0.1",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
@@ -96,7 +92,7 @@
     "cross-env": "^5.2.0",
     "css-hot-loader": "^1.4.2",
     "css-loader": "^2.1.1",
-    "cssnano": "^4.1.7",
+    "cssnano": "^4.1.10",
     "dotenv": "^6.1.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
@@ -123,7 +119,6 @@
     "lint-staged": "^8.0.4",
     "mini-css-extract-plugin": "^0.5.0",
     "postcss": "^7.0.5",
-    "postcss-assets": "^5.0.0",
     "postcss-cli": "^6.0.1",
     "postcss-custom-media": "^7.0.7",
     "postcss-custom-properties": "^8.0.9",
@@ -143,7 +138,7 @@
     "semantic-release": "^15.10.8",
     "semantic-release-conventional-commits": "^2.0.1",
     "stats-webpack-plugin": "^0.7.0",
-    "storybook-addon-jsx": "^5.4.0",
+    "storybook-addon-jsx": "^6.0.0",
     "surge": "^0.20.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.25.1",
@@ -157,7 +152,7 @@
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   }
 }

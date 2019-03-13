@@ -31,24 +31,10 @@ module.exports = {
         child_process: 'empty',
     },
     externals: externals,
-    // optimization: {
-    //     namedModules: true,
-    //     noEmitOnErrors: true,
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             clientLogos: {
-    //                 test: /[\\/]assets[\\/]img[\\/]clients[\\/]/,
-    //                 name: 'clients',
-    //                 chunks: 'all',
-    //             },
-    //             techLogos: {
-    //                 test: /[\\/]assets[\\/]img[\\/]tech[\\/]/,
-    //                 name: 'tech',
-    //                 chunks: 'all',
-    //             },
-    //         },
-    //     },
-    // },
+    optimization: {
+        namedModules: true,
+        noEmitOnErrors: true,
+    },
     stats: {
         cached: false,
         cachedAssets: false,
