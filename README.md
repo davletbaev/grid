@@ -50,7 +50,7 @@ This grid is developed using Storybook. Start Storybook via `yarn start` or `npm
 
 ### Commit messages
 
-This project uses `semantic-release` and `semantic-release-conventional-commits` to automatically determine the next version number for new releases. By default every release is a patch release. Prefix your commit messages with `minor:` or `feature:` for new minor releases and `major:` or `breaking:` for new major releases. Have a look at [.releaserc](.releaserc) for more.
+This project uses `semantic-release` and `semantic-release-conventional-commits` to automatically determine the next version number for new releases. By default every release is a patch release. Prefix your commit messages with `minor:` or `feature:` for new minor releases and `major:` or `breaking:` for new major releases. Have a look at [.releaserc](https://github.com/wiremore/grid/blob/master/.releaserc) for more.
 
 ### Creating a new release
 
